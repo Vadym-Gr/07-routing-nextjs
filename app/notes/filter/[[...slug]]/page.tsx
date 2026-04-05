@@ -1,4 +1,4 @@
-import {
+/*import {
   dehydrate,
   HydrationBoundary,
   QueryClient,
@@ -27,5 +27,33 @@ export default async function Page({
     <HydrationBoundary state={dehydrate(qc)}>
       <NotesClient tag={tag} />
     </HydrationBoundary>
+  );
+}*/
+
+type Props = {
+  params: {
+    slug?: string[];
+  };
+};
+
+export default function FilterPage({ params }: Props) {
+  const slug = params.slug ?? [];
+
+  // Випадок: /notes/filter
+  if (slug.length === 0) {
+    return (
+      <main>
+        <h1>Filter page</h1>
+        <p>No filters selected</p>
+      </main>
+    );
+  }
+
+  // Випадок: /notes/filter/...
+  return (
+    <main>
+      <h1>Filter results</h1>
+      <p>Slug: {slug.join(" / ")}</p>
+    </main>
   );
 }
