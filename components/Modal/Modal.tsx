@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+/*import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
@@ -48,4 +48,26 @@ export default function Modal({ children, onClose }: ModalProps) {
     </div>,
     modalRoot
   );
+}*/
+
+'use client';
+
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+
+export default function Modal({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
+  const root = document.getElementById('modal-root');
+  if (!root) return null;
+
+  return createPortal(<div>{children}</div>, root);
 }
