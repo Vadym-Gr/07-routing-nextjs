@@ -1,13 +1,10 @@
 import axios from 'axios';
 import { Note } from '@/types/note';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-const TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
-
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
   },
 });
 
@@ -43,6 +40,8 @@ export const createNote = async (
   return res.data;
 };
 
-export const deleteNote = async (id: string): Promise<void> => {
-  await api.delete(`/notes/${id}`);
+// ✅ FIX: must return deleted note
+export const deleteNote = async (id: string): Promise<Note> => {
+  const res = await api.delete<Note>(`/notes/${id}`);
+  return res.data;
 };

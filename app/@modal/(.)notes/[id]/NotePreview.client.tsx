@@ -8,15 +8,15 @@ import Modal from '@/components/Modal/Modal';
 export default function NotePreview({ id }: { id: string }) {
   const router = useRouter();
 
+  const handleClose = () => {
+    router.back();
+  };
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ['note', id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
   });
-
-  const handleClose = () => {
-    router.back();
-  };
 
   return (
     <Modal>
