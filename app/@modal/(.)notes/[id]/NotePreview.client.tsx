@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { fetchNoteById } from '@/lib/api/notes';
+import { fetchNoteById } from '@/lib/api';
 import Modal from '@/components/Modal/Modal';
 
 export default function NotePreview({ id }: { id: string }) {
@@ -14,10 +14,17 @@ export default function NotePreview({ id }: { id: string }) {
     refetchOnMount: false,
   });
 
+  const handleClose = () => {
+    router.back();
+  };
+
   return (
     <Modal>
+      <button onClick={handleClose}>Close</button>
+
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error loading note</p>}
+
       {data && (
         <div>
           <h2>{data.title}</h2>
