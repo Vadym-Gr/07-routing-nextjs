@@ -24,6 +24,7 @@ export default function NotePreview({ id }: Props) {
   });
 
   return (
+    
     <Modal onClose={handleClose}>
       <button onClick={handleClose}>Close</button>
 

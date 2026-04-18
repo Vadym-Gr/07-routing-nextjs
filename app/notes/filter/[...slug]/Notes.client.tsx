@@ -67,7 +67,7 @@ export default function NotesClient({ tag }: Props) {
       />
 
       {isModalOpen && (
-        <Modal onClose={closeModal}> {/* ✅ FIX */}
+        <Modal onClose={closeModal}> 
           <NoteForm onClose={closeModal} />
         </Modal>
       )}
