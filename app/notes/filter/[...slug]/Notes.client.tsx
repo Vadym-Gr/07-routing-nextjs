@@ -39,7 +39,7 @@ export default function NotesClient({ tag }: Props) {
       }),
   });
 
-  const notes: Note[] = data?.notes ?? [];
+  const notes = data?.notes ?? [];
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -60,14 +60,14 @@ export default function NotesClient({ tag }: Props) {
       )}
 
       <Pagination
-        pageCount={data?.totalPages ?? 1}
         currentPage={page}
+        pageCount={data?.totalPages ?? 1} // ✅ FIX
         totalPages={data?.totalPages ?? 1}
         onPageChange={setPage}
       />
 
       {isModalOpen && (
-        <Modal>
+        <Modal onClose={closeModal}> {/* ✅ FIX */}
           <NoteForm onClose={closeModal} />
         </Modal>
       )}

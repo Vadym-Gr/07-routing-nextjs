@@ -42,7 +42,13 @@ export default function NoteForm({ onClose }: NoteFormProps) {
         tag: 'Todo',
       }}
       validationSchema={schema}
-      onSubmit={(values) => mutation.mutate(values)}
+      onSubmit={(values) =>
+  mutation.mutate({
+    ...values,
+    createdAt: new Date().toISOString(), // ✅ FIX
+    updatedAt: new Date().toISOString(), // ✅ FIX
+  })
+}
     >
       <Form className={css.form}>
         <div className={css.formGroup}>

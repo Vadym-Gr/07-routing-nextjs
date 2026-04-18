@@ -2,9 +2,9 @@ import axios from 'axios';
 import { Note } from '@/types/note';
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL, // ✅ тут
   headers: {
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`, // ✅ тут
   },
 });
 

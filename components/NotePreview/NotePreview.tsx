@@ -14,8 +14,12 @@ export default function NotePreview({ id }: { id: string }) {
 
   return (
     <div>
-      <h2>{data.title}</h2>
-      <p>{data.content}</p>
+      {data && ( // ✅ FIX: перевірка на undefined
+        <>
+        <h2>{data.title}</h2>
+        <p>{data.content}</p>
+        </>
+      )}
     </div>
   );
 }

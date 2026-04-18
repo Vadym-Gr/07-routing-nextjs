@@ -1,16 +1,19 @@
 import { ReactNode } from 'react';
 
-export default function Layout({
+export default function NotesLayout({
   children,
   sidebar,
+  modal,
 }: {
   children: ReactNode;
-  sidebar: ReactNode;
+  sidebar?: ReactNode; 
+  modal?: ReactNode;
 }) {
   return (
-    <div style={{ display: 'flex', gap: 20 }}>
+    <div style={{ display: 'flex' }}>
       <aside>{sidebar}</aside>
       <main>{children}</main>
+      {modal}
     </div>
   );
 }

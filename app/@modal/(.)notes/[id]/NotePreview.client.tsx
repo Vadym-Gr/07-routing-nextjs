@@ -24,7 +24,7 @@ export default function NotePreview({ id }: Props) {
   });
 
   return (
-    <Modal>
+    <Modal onClose={handleClose}>
       <button onClick={handleClose}>Close</button>
 
       {isLoading && <p>Loading...</p>}
