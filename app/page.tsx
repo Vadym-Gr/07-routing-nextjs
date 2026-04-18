@@ -1,6 +1,6 @@
 import css from './page.module.css';
 
-/*export default function Home() {
+export default function Home() {
   return (
     <main>
       <div className={css.container}>
@@ -11,9 +11,9 @@ import css from './page.module.css';
       </div>
     </main>
   );
-}*/
-import { redirect } from 'next/navigation';
+}
+/*import { redirect } from 'next/navigation';
 
 export default function Home() {
   redirect('/notes');
-}
+}*/
